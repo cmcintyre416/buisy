@@ -26,53 +26,59 @@ class AddBusinessCard extends React.Component {
         this.setState({
             businessCard: newCard,
         })
-        // console.log(this.state);
     }
 
     handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
         const { businessCard } = this.state;
         this.props.getBusinessCardPayload(businessCard);
         this.props.closeCreateBusinessCard();
         scroll.scrollToBottom();
+
     }
 
     handleClose() {
         this.props.closeCreateBusinessCard();
     }
 
+
     render() {
         return (
             <div className="addCard">
-                <button className='x' onClick={this.handleClose.bind(this)}
+                <button className="createCloseButton" onClick={this.handleClose.bind(this)}
                 >X</button>
                 <div className="addCard__titleWrapper">
-                    <h1 className="addCard__title">Create New Card</h1>
-                    <p className="addCard__description">Now you dont have to worry about the stack of cards in your wallet. Fill in the information from your hard copy business card to save it to your wallet.</p>
+                    <h4 className="addCard__title">Create New Card</h4>
+                    <p className="addCard__description">Don't worry about the stack of cards in your wallet. Fill in the information from your hard copy business card to save it to your digital wallet.</p>
                 </div>
                 <form className="addCard__form">
                     <input className="addCard__inputs"
                         type="text"
+                        required="true"
                         placeholder="Person's Name"
                         onChange={(e) => this.updateForm('name', e.target.value)}
                     />
                     <input className="addCard__inputs"
                         type="text"
+                        required="true"
                         placeholder="Job Title"
                         onChange={(e) => this.updateForm('jobTitle', e.target.value)}
                     />
                     <input className="addCard__inputs"
                         type="text"
+                        required="true"
                         placeholder="Company"
                         onChange={(e) => this.updateForm('company', e.target.value)}
                     />
                     <input className="addCard__inputs"
                         type="text"
+                        required="true"
                         placeholder="Phone"
                         onChange={(e) => this.updateForm('phone', e.target.value)}
                     />
                     <input className="addCard__inputs"
                         type="text"
+                        required="true"
                         placeholder="Email"
                         onChange={(e) => this.updateForm('email', e.target.value)}
                     />
