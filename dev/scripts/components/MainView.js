@@ -7,6 +7,7 @@ import MdAddToPhotos from 'react-icons/lib/md/add-to-photos';
 import MdContacts from 'react-icons/lib/md/contacts';
 import MdSearch from 'react-icons/lib/md/search';
 
+
 function searchingFor(term) {
     return function(x){
         return x.name.toLowerCase().includes(term.toLowerCase()) || !term;
@@ -58,6 +59,7 @@ class MainView extends React.Component {
                 this.setState({
                     savedCards: [],
                     loggedIn: false
+
                 })
             }
         })
@@ -170,7 +172,7 @@ class MainView extends React.Component {
         const {term, savedCards} = this.state;
         if (this.state.loggedIn) {
             return (
-                <div>
+                <div className="cardSection__wrapper">
                     <div className="formatCard__wrapper">
                         <div className="search__wrapper">
                             <div className="search__innerWrapper">
@@ -202,44 +204,48 @@ class MainView extends React.Component {
     render() {
         return (
             <div className="mainView">
-                <div className="innerCircle">
-                    <div className="headerContentWrapper">
-                        <h1>Buisy</h1>
-                        <h2>Your Digital Buisiness Card Wallet</h2>
-                        {this.notLoggedInMessage()}
-                        {
-                            (() => {
-                                if (this.state.loggedIn) {
-                                    return (
-                                        <div>
-                                            <div className="mainView__button">
-                                                <button onClick={() => this.toggleCreateBusinessCard()}>
-                                                < MdAddToPhotos className="addIcon"/>
-                                                <p>Add New Business Card</p>
-                                                </button>
+                <div className="headerwrapper">
+                    <div className="innerCircle">
+                        <div className="headerContentWrapper">
+                            <h1>Buisy</h1>
+                            <h2>Your Digital Business Card Wallet</h2>
+                            {this.notLoggedInMessage()}
+                            {
+                                (() => {
+                                    if (this.state.loggedIn) {
+                                        return (
+                                            <div>
+                                                <div className="cardButtonWrapper">
+                                                    <div className="mainView__button">
+                                                        <button onClick={() => this.toggleCreateBusinessCard()}>
+                                                        < MdAddToPhotos className="addIcon"/>
+                                                        <p>Add <span className="removeSpan">New Business</span> Card</p>
+                                                        </button>
+                                                    </div>
+                                                    <div className="mainView__button--viewCards mainView__button">
+                                                        <button onClick={this.scrollToWallet}>
+                                                            <p>Your Wallet</p>
+                                                        < MdContacts className="viewIcon"/>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div className="buttonWrapper">
+                                                    <button href="" onClick={this.logOut}>Logout</button>
+                                                </div>
                                             </div>
-                                            <div className="mainView__button--viewCards mainView__button">
-                                                <button onClick={this.scrollToWallet}>
-                                                    <p>Your Wallet</p>
-                                                < MdContacts className="viewIcon"/>
-                                                </button>
-                                            </div>
+                                        )
+                                    }
+                                    else {
+                                        return (
                                             <div className="buttonWrapper">
-                                                <button href="" onClick={this.logOut}>Logout</button>
+                                                <button className="createAccountButton" href="" onClick={this.showCreate}>Create Account</button>
+                                                <button className="loginButton" href="" onClick={this.showLogin}>Login</button>
                                             </div>
-                                        </div>
-                                    )
-                                }
-                                else {
-                                    return (
-                                        <div className="buttonWrapper">
-                                            <button className="createAccountButton" href="" onClick={this.showCreate}>Create Account</button>
-                                            <button className="loginButton" href="" onClick={this.showLogin}>Login</button>
-                                        </div>
-                                    )
-                                }
-                            })()
-                        }
+                                        )
+                                    }
+                                })()
+                            }
+                        </div>
                     </div>
                 </div>
                 <div className={this.state.addCardCondition ? "sideBar slide-in" : "sideBar slide-out"}>

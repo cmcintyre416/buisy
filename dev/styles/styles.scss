@@ -108,7 +108,7 @@ body {
 
 .addCard__title {
     font-size: 30px;
-    padding-top: 50px;
+    text-align: center; 
 }
 
 .slide-in {
@@ -130,12 +130,10 @@ body {
     flex-direction: column;
     align-items: center;
     .createCloseButton {
-        font-size: 25px;
+        font-size: 20px;
         position: absolute;
         top: 10px;
         right: 10px;
-        border-radius: 50%;
-        height: 80px;
         width: 50px;
         display: flex;
         justify-content: center;
@@ -231,22 +229,22 @@ body {
 
 .addCard__inputs {
     width: 80%;
-    margin: 20px 0;
+    margin: 10px 0;
     border: none;
-    font-size: 18px;
+    font-size: 14px;
     padding: 10px;
     background-color: transparent;
     color: black;
     border-bottom: 0.5px solid black;
+    box-shadow: none;
 }
 
 button.addCard__inputs {
     padding: 10px 0;
-    width: calc(80% + 20px)
+    width: 50%;
 }
 
 .formatCard__wrapper {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -254,7 +252,6 @@ button.addCard__inputs {
 }
 
 .formatCard__scrollThrough {
-    height: 90vh;
     display: flex;
     flex-direction: column;
     overflow-x: scroll;
@@ -263,10 +260,15 @@ button.addCard__inputs {
     padding-top: 200px;
     padding-left: calc(50% - 290px);
     flex-direction: row;
+    overflow-y: hidden;
 }
 
 .react-card-flipper {
     width: 700px;
+}
+
+.react-card-flip {
+    min-height: 500px;
 }
 
 .cardWrapper{
@@ -313,14 +315,12 @@ button.addCard__inputs {
 
     .card__notes {
         white-space: normal;
+        word-break: break-all;
     }
 
 
 }
 
-.doneEditBack {
-
-}
 
 .gradientLine {
     background-image: linear-gradient(to bottom, rgba(73, 210, 255, 0.75), rgba(43,50,178,0.75));
@@ -355,6 +355,7 @@ button.addCard__inputs {
     position: absolute;
     display: flex;
     justify-content: center;
+    min-height: 55px;
     bottom: -80px;
     left: 15%;
     background-color: rgb(210, 210, 210);
@@ -371,6 +372,7 @@ button.addCard__inputs {
 
 .notesButton {
     position: absolute;
+    min-height: 55px;
     display: flex;
     justify-content: center;
     bottom: -80px;
@@ -390,6 +392,7 @@ button.addCard__inputs {
 
 .deleteButton {
     position: absolute;
+    min-height: 55px;
     display: flex;
     justify-content: center;
     bottom: -80px;
@@ -408,6 +411,7 @@ button.addCard__inputs {
 
 .editButton {
     position: absolute;
+    min-height: 55px;
     bottom: -80px;
     display: flex;
     justify-content: center;
@@ -496,7 +500,7 @@ button.addCard__inputs {
 
 h4 {
     font-size: 25px;
-    margin: 0;
+    margin: 40px 0 10px;
     padding: 25px 0;
 }
 
@@ -514,16 +518,15 @@ input {
 }
 
 .accountCloseButton {
-    font-size: 25px;
+    font-size: 20px;
     position: absolute;
-    top: -35px;
-    right: -35px;
-    border-radius: 50%;
-    height: 80px;
+    top: -20px;
+    right: -20px;
     width: 50px;
+    height: 80px;
     display: flex;
     justify-content: center;
-    background-color: rgb(73, 210, 255);
+    background-color: #49d2ff;
     font-weight: bold;
     color: white;
     &:hover {
@@ -613,7 +616,7 @@ font-size: 18px;
 
 footer {
     margin-top: 100px;
-    height: 40vh;
+    height: 50vh;
     position: relative;
 }
 
@@ -622,7 +625,7 @@ footer {
     bottom: 0;
     right: 0;
     background-color: black;
-    height: 500px;
+    height: 100%;
     width: 60%;
     z-index: 2;
     background-image: linear-gradient(to right, rgba(73, 210, 255, 0.75), rgba(43,50,178,0.75)), url('../assets/bottomCircle.jpg');
@@ -630,4 +633,445 @@ footer {
     background-size: cover;
     box-shadow: 0 -14px 28px rgba(0,0,0,0.25), 0 -10px 10px rgba(0,0,0,0.22);
     border-top-left-radius: 100%;
+}
+
+// - need to add webkit-overflow-scrolling: touch;
+// Still need to fix card size for scroll
+
+// MEDIA QUERIES
+
+@media (max-width: 1350px) {
+    .mainView__button--viewCards button {
+        height: 125px;
+        width: 125px;
+    }
+    .mainView__button {
+        button {
+            height: 100px;
+            width: 100px;
+            font-size: 16px;
+        }
+    }
+    .sideBar {
+            width: 50%;
+    }
+
+    .createUserModal {
+        width: 50%;
+    }
+
+    .loginModal {
+        width: 50%;
+    }
+}
+
+@media (max-height: 880px) {
+    footer {
+        margin-top: 100px;
+    }
+    
+    .lowerCircle {
+
+    }
+
+    .removeSpan {
+        display: none;
+    }
+}
+
+
+@media (max-width: 870px) {
+    .mainView {
+        .buttonWrapper {
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .headerwrapper {
+            height: 100vh;
+        }
+
+        .innerCircle {
+            height: 80vh;
+            border-bottom-right-radius: 10%;
+            border-bottom-left-radius: 10%;
+        }
+
+        .headerContentWrapper {
+            display: flex;
+
+        }
+
+        .cardButtonWrapper {
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            bottom: -50px;
+            left: 15%;
+            right: 15%;
+        }
+
+        .addCard__inputs {
+            font-size: 12px;
+        }
+
+        .mainView__button {
+            position: static;
+        }
+    }
+
+     .createUserModal {
+        width: 70%;
+    }
+
+    .loginModal {
+        width: 70%;
+    }
+
+    .formatCard__scrollThrough {
+        padding-top: 100px;
+    }
+    .formatCard__wrapper {
+
+    }
+    .lowerCircle {
+        border-radius: 0;
+        width: 100%;
+        height: 30vh;
+    }
+    footer {
+        margin-top: 0;
+        height: 30vh;
+    }
+}
+  
+@media (max-height: 785px) {
+    .addCard__title {
+        margin: 10px 0;
+    }
+
+    h1 {
+        margin-top: 0px;
+    }
+}
+
+@media (max-height: 700px) {
+    .addCard__title {
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .addCard__inputsButton {
+        margin: 20px 0;
+    }
+
+    .addCard__inputs {
+        margin: 0;
+    }
+}
+
+@media (max-width: 700px) {
+    .mainView {
+        h1 {
+        font-size: 100px;
+        margin-top: 0px;
+        }
+        h2 {
+            font-size: 14px;
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        .addCard {
+            .addCard__inputsButton {
+                width: 65%;
+            }
+        }
+
+        .removeSpan {
+            display: none;
+        }
+    }
+
+    .slide-in {
+            width: 70%;
+        }
+
+    .createUserModal {
+        width: 80%;
+    }
+
+    .loginModal {
+        width: 80%;
+    }
+
+    .formatCard__scrollThrough {
+        height: 90vh;
+        margin-bottom: 50px;
+        min-height: 500px;
+        padding-top: 50px;
+        padding-left: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formatCard__scrollThrough> div {
+        width: 100%;
+        display: flex;
+        padding-left: calc(50% - (450px / 2))
+    }
+
+    .search__wrapper {
+        padding: 100px 0;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .card {
+        width: 450px;
+        align-self: center;
+    }
+
+}
+
+@media (max-height: 620px) {
+    .mainView .headerContentWrapper {
+        padding-top: 100px;
+    }
+
+    .mainView .buttonWrapper {
+        top: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .card {
+        width: 400px;
+    }
+
+    .formatCard__scrollThrough> div {
+        padding-left: calc(50% - (400px / 2))
+    }
+}
+
+
+@media (max-width: 540px) {
+
+    .search__wrapper {
+        padding-bottom: 50px;
+    }
+
+    .card {
+        width: 350px;
+        height: 250px;
+    }
+
+    .react-card-flip {
+        min-height: 425px;
+    }
+
+    .sideBar {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .addCard .createCloseButton {
+        right: 30px;
+    }
+
+    .formatCard__scrollThrough > div {
+        padding-left: calc(50% - (350px / 2))
+    }
+
+    .mainViewButton {
+        padding: 14px 25px;
+        font-size: 15px;
+        letter-spacing: 0px;
+    }
+
+    .close .accountCloseButton {
+        right: 10px;
+        top: 5px;
+        width: 30px;
+    }
+
+    .loginModal {
+        transform: translate(0);
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        bottom: 10px;
+        width: auto;
+    }
+
+    .createUserModal {
+        transform: translate(0);
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        bottom: 10px;
+        width: auto;
+    }
+}
+
+
+@media (max-width: 475px) {
+    .mainView .headerContentWrapper {
+        padding-top: 100px;
+    }
+
+    .formatCard__scrollThrough > div {
+        padding-left: calc(50% - (300px / 2))
+    }
+
+    .card {
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 450px) {
+    .formatCard__scrollThrough > div {
+        padding-left: calc(50% - (250px / 2))
+    }
+
+    #searchBar {
+        padding: 15px 10px 15px 0;
+    }
+
+    .search__innerWrapper {
+        transform: translateX(-5px);
+    }
+
+    .card__buttons {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        justify-content: space-between;
+        bottom: -80px;
+        right: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .card__buttonWrapper {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .editButton {
+        position: static;
+        width: 100%;
+        transform: translate(0);
+    }
+
+    .deleteButton {
+        position: static;
+        width: 100%;
+        transform: translate(0);
+    }
+
+    .notesButton {
+        position: static;
+        width: 100%;
+        transform: translate(0);
+    }
+
+    .goBack {
+        position: static;
+        width: 100%;
+        transform: translate(0);
+    }
+
+    .card {
+        width: 250px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 400px) {
+    .search__innerWrapper {
+        width: 80%;
+    }
+
+    .card {
+        width: 215px;
+        height: 200;
+    }
+
+    .formatCard__scrollThrough > div {
+        padding-left: calc(50% - 215px / 2);
+    }
+}
+
+@media (max-width: 360px) {
+    .formatCard__scrollThrough > div {
+        padding-left: 50px;
+    }
+
+    .mainView h3 {
+        padding-top: 25px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 340px) {
+    .formatCard__scrollThrough > div {
+        padding-left: calc(50% - 200px / 2);
+    }
+    
+    .card {
+        width: 200px;
+    }
+
+    .card__buttons {
+        width: 100%;
+    }
+
+    .card__buttonWrapper {
+        width: 25%;
+    }
+
+    .cardButtonWrapper {
+        .mainView__button button {
+            height: 85px;
+            width: 85px;
+        }
+    }
+
+    .viewIcon {
+        font-size: 30px;
+    }
+
+    .addIcon {
+        font-size: 30px;
+    }
+
+    .mainViewButton {
+        padding: 14px 25px;
+        font-size: 15px;
+        letter-spacing: 0px;
+    }
+}
+
+@media (max-width: 330px) {
+    .card {
+        width: 180px;
+    }
+
+    .formatCard__scrollThrough > div {
+        padding-left: calc(50% - 200px / 2);
+    }
 }

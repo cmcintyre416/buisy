@@ -42,14 +42,22 @@ export default class FormatBusinessCards extends React.Component {
     }
 
     getInitials() {
-        const string = this.props.card.name;
-        const matches = string.match(/\b(\w)/g);
-        const acronym = matches.join('');
-        return (
-            <div className="circleInitial">
-                <p className="initial">{acronym}</p>
-            </div>
-        )  
+        if(this.props.card.name.length < 1) {
+            return (
+                <div className="circleInitial">
+                    <p className="initial">?</p>
+                </div>
+            )
+        } else {
+            const string = this.props.card.name;
+            const matches = string.match(/\b(\w)/g);
+            const acronym = matches.join('');
+            return (
+                <div className="circleInitial">
+                    <p className="initial">{acronym}</p>
+                </div>
+            )  
+        }
     }
 
 
@@ -111,20 +119,22 @@ export default class FormatBusinessCards extends React.Component {
                             {editingTempFront}
                             <div className="gradientLine"></div>
                             {this.getInitials()}
-                            <div className="card__list">
-                                <div>
-                                    <button className="editButton" onClick={() => this.setState({ editing: true })}>
+                            <div className="card__buttons">
+                                <div className="card_buttonWrapper">
+                                    <button className="editButton mainViewButton" onClick={() => this.setState({ editing: true })}>
                                         <MdModeEdit className="editIcon" />
                                         <p className="editText">Edit Card</p>
                                     </button>
                                 </div>
-                                <div>
-                                    <button className="deleteButton" onClick={() => this.props.remove(this.props.card.key)}>
+                                <div  className="card_buttonWrapper">
+                                    <button className="deleteButton mainViewButton" onClick={() => this.props.remove(this.props.card.key)}>
                                         <MdDeleteForever className="deleteIcon" />
                                         <p className="deleteText">Delete Card</p>
                                     </button>
                                 </div>
-                                <button className="notesButton" onClick={this.handleClick}>Notes</button>
+                                <div className="card__buttonWrapper">
+                                    <button className="notesButton mainViewButton mainViewButton" onClick={this.handleClick}>Notes</button>
+                                </div>
                             </div>  
                         </div>
                     </div>
@@ -133,20 +143,22 @@ export default class FormatBusinessCards extends React.Component {
                             {editingTempBack}
                             <div className="gradientLine"></div>
                             {this.getInitials()}
-                            <div className="card__list">
-                                <div>
-                                    <button className="editButton" onClick={() => this.setState({ editing: true })}>
+                            <div className="card__buttons">
+                                <div  className="card_buttonWrapper">
+                                    <button className="editButton mainViewButton" onClick={() => this.setState({ editing: true })}>
                                         <MdModeEdit className="editIcon" />
                                         <p className="editText">Edit Card</p>
                                     </button>
                                 </div>
-                                <div>
-                                    <button className="deleteButton" onClick={() => this.props.remove(this.props.card.key)}>
+                                <div className="card_buttonWrapper">
+                                    <button className="deleteButton mainViewButton" onClick={() => this.props.remove(this.props.card.key)}>
                                         <MdDeleteForever className="deleteIcon" />
                                         <p className="deleteText">Delete Card</p>
                                     </button>
                                 </div>
-                                <button className="goBack" onClick={this.handleClick}>Back</button>
+                                <div className="card__buttonWrapper">
+                                    <button className="goBack mainViewButton" onClick={this.handleClick}>Back</button>
+                                </div>
                             </div>  
                         </div>
                     </div>

@@ -33,8 +33,7 @@ class AddBusinessCard extends React.Component {
         const { businessCard } = this.state;
         this.props.getBusinessCardPayload(businessCard);
         this.props.closeCreateBusinessCard();
-        scroll.scrollToBottom();
-
+        scroll.scrollTo(1100);
     }
 
     handleClose() {
@@ -45,11 +44,11 @@ class AddBusinessCard extends React.Component {
     render() {
         return (
             <div className="addCard">
-                <button className="createCloseButton" onClick={this.handleClose.bind(this)}
+                <button className="createCloseButton mainViewButton" onClick={this.handleClose.bind(this)}
                 >X</button>
                 <div className="addCard__titleWrapper">
                     <h4 className="addCard__title">Create New Card</h4>
-                    <p className="addCard__description">Don't worry about the stack of cards in your wallet. Fill in the information from your hard copy business card to save it to your digital wallet.</p>
+                    <p className="addCard__description removeSpan">Don't worry about the stack of cards in your wallet. Fill in the information from your hard copy business card to save it to your digital wallet.</p>
                 </div>
                 <form className="addCard__form">
                     <input className="addCard__inputs"
@@ -88,8 +87,10 @@ class AddBusinessCard extends React.Component {
                         onChange={(e) => this.updateForm('interactionNotes', e.target.value)}
                     />
                     <button
-                        className="addCard__inputsButton"
-                        onClick={this.handleSubmit.bind(this)}>
+                        className="addCard__inputsButton mainViewButton"
+                        type="submit"
+                        onClick={this.handleSubmit.bind(this)}
+                        >
                         Add
                     </button>
                 </form>
